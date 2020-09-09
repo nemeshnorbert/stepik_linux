@@ -1,0 +1,485 @@
+Manuals
+    man - system reference manuals
+        man <COMMAND>
+        man <CONF_FILE>
+        man <DAEMON>
+        man -k <SEARCH TEXT>
+        man hier  # print description of directories hierarchy of the host machine
+
+    whatis - one-line manual
+        whatis <COMMAND>
+
+    whereis - system file location (binary, source manual)
+        whatis <COMMAND>
+
+    mandb - update local manuals
+
+
+Navigating directories
+    pwd - print current directory
+
+    cd - change directory
+        cd <DIR>
+        cd ~   # go $HOME
+        cd -   # go back
+        cd ..  # go up
+
+    ls - list files in a directory
+        ls <DIR>
+        ls -a   # list all files (including hidden files)
+        ls -l   # detailed listing
+        ls -lh  # detailed listing with numbers in human readable format
+
+    mkdir - create directory
+        mkdir    <DIR>
+        mkdir -p <DIR>  # create directories including parent directories
+
+    rmdir - delete direcory if empty
+        rm       <DIR>
+        rmdir -p <DIR>  # delete directories including parent directories
+
+
+Managing files
+    file - return file type
+        file <FILE>
+        file -s   # return file type for special files (e.g. files in /dev or /proc)
+
+    touch - change file timestamps
+        touch            <FILE>
+        touch -t <STAMP> <FILE>
+
+    rm - delete files and directories
+        rm     <FILES>
+        rm -i  <FILES>      # ask confirmation before deleting
+        rm -rf <DIRS|FILES> # recursive forced deletion of files and directories
+
+    cp - copy files and directories
+        cp    <SRC> <DST>
+        cp -r <SRC> <DST>  # recursive copying
+        cp -i <SRC> <DST>  # ask confirmation before copying
+
+    mv - move file or directory
+        mv    <SRC> <DST>  # copy (or rename if SRC exists) a file or a directory
+        mv -i <SRC> <DST>  # ask confirmation before moving
+
+
+Managing files contents
+    head - ouput the first part of the file
+        head <FILE>        # output first 10 lines
+        head -n<N> <FILE>  # output first N lines
+        head -c<N> <FILE>  # ouput first N bytes
+
+    tail - output the last part of the file
+        tail       <FILE>  # ouput last 10 lines
+        tail -n<N> <FILE>  # output last N lines of the file
+        tail -c<N> <FILE>  # output last N bytes of the file
+
+    cat - concatenate files and print to stdout
+        cat <FILE>   # print file to stdout
+        cat <FILES>  # concatenate multiple files and print to stdout
+
+    tac - concatenate files and print to stdout in reverse
+        cat <FILE>   # print reversed file to stdout
+        cat <FILES>  # concatenate multiple files and print to stdout in reverse
+
+    less - paginate files to stdout
+        less <FILE>  # print file to stdout page by page
+
+    strings - print sequences of printable characters in files
+        strings <BINARY>  # print ASCII symbols stored in a binary file
+
+
+Directories hierarchy
+    / - root direcory
+        all files and directories are here
+
+    /bin - binary files used by all users
+
+    /sbin - binary files for OS management
+
+    /lib - shared libraries used by binaries from /bin and /sbin
+        /lib/modules - libraries used by Linux kernel
+
+    /lib32 - libraries for 32-bit systems
+
+    /li64 - libraries for 64-bit systems
+
+    /opt - optional software additionally installed from packeages
+
+    /boot - files required for booting the system
+
+    /etc - machine specific configuration files
+        /etc/init.d - settings for starting and stopping daemons
+        /etc/X11 - GUI settings
+
+    /home - users data
+
+    /root - root user data
+
+    /srv - storage for data processed by your host machine (e.g. /srv/sales/www)
+
+    /media - mount point for CDs, DVDs
+
+    /mnt - mount point for external file systems (e.g. SSDs or HDDs)
+
+    /tmp - temporary files storage
+
+    /dev - standard physical devices that host system regards as files
+        /dev/tty - terminal device
+        /dev/pts/1 - GUI terinal device
+        /dev/null - black hole file
+
+    /proc - files representing internal state of the kernel
+        /proc/interrupts - system interrupts
+        /proc/kcore - system RAM
+
+    /sys - hardware information
+
+    /usr - unix system resources, read only applications data
+        /usr/bin - standard system commands
+        /usr/include - standard C header files
+        /usr/lib - standard shared libraries
+        /usr/local - storage for local software installation
+        /usr/share - system independent data
+        /usr/src - system kernel source code
+
+    /var - logs, caches
+        /var/log - general purpose logs storage
+        /var/log/syslog - log with all system events
+        /var/cache - applications caches
+        /var/spool - email serever data and cron data
+        /var/lib - data on applications state
+
+
+Commands and arguments
+    Command calls
+        <CMD> <ARG1> <ARG2> ...  # excessive whitespaces are discarded
+
+    Arguments enclosed by single or double quotes are preserved as is
+        echo 'la   la la'  # ouput: la   la la
+
+    Some command are shell builtins, some are external binaries, some are both
+
+    type - detect command type (shell builtin, external tool, alias)
+        type    <CMD>  # get shell command type
+        type -a <CMD>  # get all types for a command
+
+    which - detect binary location (search among directories listed in $PATH)
+        which <CMD>  # get binary location for command CMD
+
+    alias - create pseudonym for command
+        alias <ALIAS_NAME>="COMMANDS_WITH_ARGS"
+
+    unalias - delete alias
+        unalias <ALIAS_NAME>  # delete existing alias
+
+
+Operators
+    ; - seprarte shell command
+        <CMD1>; <CMD2>; <CMD3>  # execute all commands (even if some fail)
+        Example
+            echo Hi; echo Dude; echo Wazzup
+
+    & - execute command and immideately return control to the shell
+        <CMD> &  # execute CMD and return control to the shell
+        Example
+            sleep 30 &
+
+    $? - exit status of the last executed command
+
+    $- - settings of the current shell
+        Example
+            echo $-  # output: himBH (see also set --help)
+
+    && - logical and
+        <CMD1> && <CMD2>  # execute CMD1, if exit status is 0, execute CMD2
+
+    || - logical or
+        <CMD1> || <CMD2>  # execute CMD1, if exit status is not 0, execute CMD2
+
+    # - commemts
+        <CMD> # <COMMENT>  # execute CMD, ignore everithing after # sign till the end of the line
+
+    \ - escaping symbol
+        \n - new line
+        \t - horizontal TAB
+        \v - vertical tab
+        echo hi\
+        >  dude \
+        >  wazzup
+        - print multiline command
+
+
+Environment variables
+    <NAME>=<CONTENTS> - declaration of variable <NAME> with value <CONTENTS>. Names are case sensitive
+        Example
+            MyVar='la la'         # save text 'la la' in variable MyVar
+
+    $<NAME> - substitute text $<NAME> with contents of variable <NAME>
+            NewVar="doo doo $MaVar" # expand $MyVar, get the text 'doo doo la la' and store it in NewVar
+
+    $PS1 - environment variable describing shell prompt format
+        Example
+            PS1='> '
+
+    $PATH - environment variable storing paths to look for for binaries
+        Example
+            PATH=$PATH:/home/bin  # add /home/bin as path to look for binaries in when running shell commands
+
+    export - make environment variables available to child shell processes
+        Example
+            export MyVar   # make existing MyVar available to child shell processes
+        Example
+            export MyVar=4 # assign value 4 to MyVar and make it available to child shell processes
+
+    env - run command with additional environment variables
+        env                   # list current shell environment variables
+        env <VAR_DEFS> <CMD>  # execute <CMD> with additional environment variables defined in <VAR_DEFS>
+
+    set - configure shell, set environment variables
+        set     # list all environment variable and functions
+        set -x  # turn on  output expanded command exectured by shell
+        set +x  # turn off output expanded command exectured by shell
+        set -u  # treat uninitialized variables as errors
+        set +u  # treat uninitialized variables as empty variables
+        set -C  # disallow existing regular files to be overwritten by redirection of output
+        set +C  #    allow existing regular files to be overwritten by redirection of output
+
+    unset - delete existing variable from shell
+
+Shell
+    bash - default shell
+        bach -c 'COMMANDS'  # execute COMMANDS in a child shell process
+
+    $(<COMMANDS>) -
+        Example
+            $(A='Hey'; echo $A)                            # Run two commands
+        Example
+            $(A='Hey'; echo $A; $(B=', boy!', echo $A$B))  # One can nest such child processes calls
+
+    `<COMMANDS>` - run COMMANDS in child shell process, such calls cannot be nested
+        Example
+            `cd /etc; ls -d *`
+
+
+History
+    history - list previously executed commands
+        history <N>  # list last N executed commands
+        N.B.
+            $HISTSIZE - number of commands to store in history
+            $HISTFILE - path to file with history
+            $HISTFILESIZE - size of the history file
+
+    !! - last executed command
+        Example
+            ls /root
+            sudo !!
+
+    !<CMD_PREFIX> - run previously executed command that starts from CMD_PREFIX
+        Example
+            touch file42
+            cd ~
+            !to
+
+    !<CMD_PREFIX>:<SED_REGEX> - run previously executed command that starts from CMD_PREFIX and apply changes via SED_REGEX
+        Example
+            cat file1
+            !ca:s/1/2
+
+    !<N> - run previously executed command that with order number N in history
+        Example
+            !43
+
+
+Utilities
+    find - search for files in a directory hierarchy
+        Example
+            find /etc  # find all files in etc directory
+        Example
+            find . -name "*.conf"  # find all files in the current directory with name matching "*.conf" glob
+        Example
+            find . -type f -name "*.conf"  # find all ordinary files in the current directory with name matching "*.conf" glob
+        Example
+            find /var/logs -type d -name "*.log"  # find all directories in /var/logs with name matching "*log" glob
+        Example
+            find ~ -newer .bashrc  # find all files in ~ created after .bashrc file
+        Example
+            find /data -name "*.odf" -exec cp {} /backup/ \;  # find all files matching "*.odf" in /data directory and copy them to /backup directory
+        Example
+            find /data -name "*.odf" -ok rm {} \;  # find all files matching "*.odf" in /data directory and remove them with requesting confirmation for each file
+
+    rename - rename multiple files via pattern matching
+        rename <SED_EXPR> <FILES>
+        Example
+            rename 's/file/FILE/' file*.png  # change file prefix to FILE prefix in all files matching file*.png glob
+        Example
+            rename 's/.txt$/.TXT/' *.txt  # change .txt extension to .TXT in all files matching *.txt glob
+
+    date - print or set sytem date and time
+        Example
+            date  # print current date
+        Example
+            date +'%A %d-%m-%Y'  # print date in a specific format
+        Example
+            date +%s  # print date in seconds since 01/01/1970
+        Example
+            date -d '1970-01-01 + 2000000000 seconds'  # print date desribed by string
+
+    cal - displays a calendar and the date of Easter
+        Example
+            cal  # display calendar for the current month
+        Example
+            cal 2 1970  # display calendar for February of 1970
+
+    sleep - delay for a specified amount of time
+        Example
+            sleep 10  # block shell for 10 seconds
+
+    time - run programs and summarize system resource usage
+        Example
+        `time date  # measure resource usage for date command
+
+
+Globbing
+    * - any string, including empty string
+        Example
+            ls File*  # list all files with prefix File
+        Example
+            ls File*55  # list all files with prefix File and suffix 55
+
+    ? - any single symbol
+        Example
+            ls File?  # list all files with 5 symbol names and prefix File
+
+    [<SYMBOLS>] - collection of symbols
+        Example
+            ls File[5A]  # list all files with 5 symbol names starting with File and ending with either 5 or A
+        Example
+            ls File[!5A]  # list all files with 5 symbol names starting with File and not ending with either 5 or A
+        Example
+            ls File[A-Z]  # list all files with 5 symbol names starting with File and ending with any character from range A to Z
+        Example
+            ls File[A-Z]  # list all files with 5 symbol names starting with File and ending with any character from range A to Z
+        Example
+            ls File[0-9]*[a-f]  # list all files with starting with File followed by digits and ending with letter from a to f
+
+
+Redirection
+    <SRC> > <FILE> - redirect output from SRC to FILE
+        Example
+            echo "Hey!" > greeting.txt  # redirect output of echo command to greeting.txt file, original file is truncated
+        Example
+            echo "Hey!" >| greeting.txt  # redirect output of echo command to greeting.txt file, force file truncation even with noclobber set
+        Example
+            find / > allfiles.txt 2> /dev/null  # redirect stderr output of find command to /dev/null
+        Example
+            find / > allfiles.txt 2>&1  # redirect stderr output of find command to stdout
+        Example
+            ls > dirlist.txt 2>&1  # redirect stdout to dirlist.txt and stderr to
+        Example
+             > dirlist.txt  # empty file dirlist.txt
+
+
+    <SRC> >> <FILE> - append output from SRC to FILE
+        Example
+            echo "Hey!" >> greeting.txt  # append output of echo command to greeting.txt file
+
+    <CMD1> | <CMD2> - redirect outpit of CMD1 to input of CMD2
+        Example
+            ls ~ | tac  # redirect output of ls command to the input of the tac command
+        Example
+            ls ~ 2>&1 | tac  # redirect stdout and stderr of ls command to the input of the tac command
+
+    <CMD1> >& <CMD2> - redicrect stdout and stderr of CMD1 to input of CMD2
+        Example
+            ls ~ >& tac  # redirect stdout and stderr of ls command to the input of the tac command
+
+    <CMD> < <FILE> - redirect FILE to CMD as input
+        Example
+            tr 'onetw' 'ONEZZ' < text.txt
+
+    <CMD> <<SENTINEL > <FILE> - redirect output of CMD to FILE. use stdin as input for CMD and SENTINEL symbol as end of input
+        Example
+            cat <EOF > text.txt
+            > один
+            > два
+            > EOF
+
+    <CMD> <<< <SRTING> - use string literal STRING as input for CMD
+        Example
+            base64 <<< linux-training.be
+
+
+Filters
+    grep - search patterns in each line of the file
+        grep <OPTIONS> <PATTERN> <FILE>  # find all lines in FILE matching PATTERN with addtional OPTIONS
+        grep -E <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using extended regular expressions ERE
+        grep -G <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using basic regular expressions ERE
+        grep -P <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using perl regular expressions ERE
+        Example
+            grep 'pass' /etc/passwd  # find all lines in /etc/passws containing substring  pass
+        Example
+            grep -i 'pass' /etc/passwd  # find all (case insensitive) lines in /etc/passws containing substring pass
+        Example
+            grep -v 'pass' /etc/passwd  # find all lines in /etc/passws not containing substring  pass
+        Example
+            grep -A2 'pass' /etc/passwd  # find all lines (and two following) in /etc/passws containing substring  pass
+        Example
+            grep -B1 'pass' /etc/passwd  # find all lines (and one preceeding) in /etc/passws containing substring  pass
+        Example
+            grep -C3 'pass' /etc/passwd  # find all lines (and three preceeding and three following) in /etc/passws containing substring  pass
+
+    tee - read from stdin and write files and stdout
+        Example
+            ls -la ~ | tee file1.txt file2.txt | grep ".bashrc"  # list all file in ~, write them to file1.txt and file2.txt, then redirect output to grep
+
+    cut - remove sections from each line of the file
+        Example
+            cut -d':' -f1-4,6 test.txt  # Extract columns from 1 to 4 and 6 from test.txt, values between columns are seprated by ':' symbol
+        Example
+            cut -d':' -c1-4,6 test.txt  # Extract symbols from 1 to 4 and 6 from test.txt, values between columns are seprated by ':' symbol
+
+    tr - translate or delete characters
+        Example
+            cat test.txt | tr 'e' 'E'  # replace 'e' in 'E' in test.txt file
+        Example
+            cat test.txt | tr 'a-z' 'A-Z'  # capitalize all English letters in test.txt file
+        Example
+            cat test.txt | tr '\n' ' '  # get rid of new lines
+        Example
+            cat test.txt | tr -d 'abc'  # delete a b and c symbols from test.txt
+
+    sort - sort lines in file
+        Example
+            sort table.txt  # get table.txt lines in sorted order
+        Example
+            sort -k2 table.txt  # get table.txt lines in sorted by column 2
+        Example
+            sort -n -k2 table.txt  # get table.txt lines in sorted by column 2, treat values in column 2 as numeric
+
+    sed - streaming editor for filtering and transforming text
+        Example
+            sed -i 's/abc/ed/' text.txt  # replace first occurence of abc with edf in ed in every line of file text.txt inplace
+        Example
+            echo "__abcabc__" | sed 's/abc/ed/'  # replace first occurence of abc with edf in ed
+        Example
+            echo "xxxabcyyyabc" | sed 's/abc/&&/'  # double first occurence of abc
+        Example
+            echo "__abc__abc__" | sed 's/abc/ed/g'  # replace each occurence of abc with edf in ed
+        Example
+            echo "123abc465" | sed -E 's/(abc)/__(\1)__(\1)pq/'  # replace first occurence of abc with __abc__abcpq
+        Example
+            echo 2014-04-01 | sed 's/....-..-../YYYY-MM-DD/'  # output: YYYY-MM-DD
+        Example
+            echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\1+\2+\3/'  # output: 2014+04+01
+        Example
+            echo -e 'nice\tto\tsee\tyou' | sed 's/\s/ /g'  # replace all tabs with spaces
+        Example
+            echo "BECOME" | sed -E '/BE/d'  # delete all occurences of BE
+        Exampe
+            echo "ll lol lool loool loooool" | sed 's/ooo\?/A/g'  # replace all 3 or more occurences of o with A
+        Exampe
+            echo "ll lol lool loool loooool" | sed 's/o\{2,3\}/A/g'  # replace all  2 or 3 occurences of o with A
+
+
+
