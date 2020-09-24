@@ -33,6 +33,7 @@ Navigating directories
     mkdir - create directory
         mkdir    <DIR>
         mkdir -p <DIR>  # create directories including parent directories
+        mkdir -m <ACCESS_RIGHTS> <DIR>  # create directory with given access rights
 
     rmdir - delete direcory if empty
         rm       <DIR>
@@ -57,6 +58,7 @@ Managing files
         cp    <SRC> <DST>
         cp -r <SRC> <DST>  # recursive copying
         cp -i <SRC> <DST>  # ask confirmation before copying
+        cp -p <SRC> <DST>  # copy file and preserve access rights
 
     mv - move file or directory
         mv    <SRC> <DST>  # copy (or rename if SRC exists) a file or a directory
@@ -481,5 +483,312 @@ Filters
         Exampe
             echo "ll lol lool loool loooool" | sed 's/o\{2,3\}/A/g'  # replace all  2 or 3 occurences of o with A
 
+
+Scripting
+    Shebang
+        #!/bin/bash - add this line at the beginning of your script to run it via /bin/bash shell. Do not forget to make this script executable
+
+    Comments
+        # - everything that goes after this symbol in the line is a comment
+
+    Variables
+        <VAR_NAME>=<VAR_VALUE> - this line defines variable VAR_NAME and assigns it value VAR_VALUE. Do not add whitespaces around = sign!
+        Example
+            my_home_dir="~"
+            my_fav_number=42
+
+    Sourcing
+        source ./script.sh - run script.sh and import all functions and variables from it into the current shell
+
+    Debugging
+        bash -x ./script.sh - run script.sh and print every line being executed
+
+    Comparison and testing
+        test - check file types and compare variables
+        Example
+            test 10 -gt 11  # check that 10 > 11; return status 1, meaning false
+            [ EXPRESSION ]  # another symtax for the same utility; do not forget to add whitespaces around square brackets!
+        Example
+            [ -d some_dir ]  # check that directory some_dir exists
+        Example
+            [ -e some_file ]  # check that file some_file exists
+        Example
+            [ -f some_thing ]  # check that some_thing is a file
+
+    Branching
+        Example
+            if <EXPRESSION>; then
+                <STATEMENT>
+            fi
+        Example
+            if <EXPRESSION>; then
+                <STATEMENT>
+            else
+                <STATEMENT>
+            fi
+        Example
+            if <EXPRESSION>; then
+                <STATEMENT>
+            elif
+                <STATEMENT>
+            else
+                <STATEMENT>
+            fi
+
+    For loop
+        Example
+            for i in <SEQUENCE>; do
+                <STATEMENT>
+            done
+        Example
+            for counter in `seq 1 10`; do
+                echo $counter
+            done
+        Example
+            for counter in {1..10}; do
+                echo $counter
+            done
+
+    While loop
+        Example
+            while <EXPRESSION>; do
+                <STATEMENT>
+            done
+        Example
+            while [ $i -ge 0 ] ; do
+                let i--;
+            done
+        Example
+            while : do  # infinite loop
+                echo hello
+                sleep 1
+            done
+
+    Until loop
+        Example
+            until <EXPRESSION>; do
+                <STATEMENT>
+            done
+        Example
+            let i=100;
+            until [ $i -le 0 ]; do
+                let i--;
+            done
+
+    Case
+        Example
+            echo -n "What anaimal do you see"
+            read animal
+            case $animal in
+                "lion" | "tiger")
+                    echo "Run for your life!"
+                ;;
+                "cat")
+                    echo "Let the mouse out"
+                ;;
+                *)
+                    echo "An unknown animal! Give it a name!"
+                ;;
+            esac
+
+    Arguments
+        $$ - procesd id of script interpreter
+        $# - number of script arguments
+        $? - return status of the last executed command
+        $* - string representation of all scrit arguments
+        $0 - script name
+        $1 - first script argument
+        ${10} - tenth script argument
+        Example
+            while (( $# )); do  # arguments traversal with shift utility
+                echo Вы передали сценарию параметр $1
+                shift
+            done
+        Example
+            echo -n "Enter a number"  # ask user to enter a number
+            read number               # read from input
+        Example
+            while getopts ":af:z" option; do  # parse arguments via getopts tool
+                case $option in
+                    a)
+                        echo" parameter -a accepted"
+                        ;;
+                    f)
+                        echo "parameter -f accepted with argument $OPTARG"
+                        ;;
+                    z)
+                        echo "parameter -z accepted"
+                        ;;
+                    :)
+                        echo "please specify argument for the parameter -$OPTARG"
+                        ;;
+                    *)
+                        echo "incorrect parameter -$OPTARG"
+                        ;;
+                esac
+            done
+
+    Eval
+        eval - interpret string as bash code
+        Example
+            answer=42
+            word=answer
+            eval x=\$$word
+            echo $x
+        Example
+            answer=42
+            word=answer
+            eval "y=\$$word"
+            echo $y
+        Example
+            lastweek='date --date="1 week ago"'
+            eval $lastweek
+
+    Arithmetic operations
+        (( <EXPRESSION> )) - evaluate arithmetic expression <EXPRESSION>
+        Example
+            ((42 > 37))
+        Example
+            ((n=$n + 1))
+        Example
+            n=$(($n + 1))
+
+    Let
+        let VAR_NAME="<EXPRESSION>" - assign result of evaluation of <EXPRESION> to the variable <VAR_NAME>
+        Example
+            let x="3+4"
+        Example
+            let x="0xA8"
+
+
+User access control
+    whoami - print effective user id
+
+    who - show who is logged on
+
+    w - show who is logged on and what they are doing
+
+    id - print real and effective user and group IDs
+
+    su - run a command with substitute user and group IDs
+        Example
+            su jack  # run bash shell under user jask with my environment
+        Example
+            su - jack  # run bash shell under user jack with his environment
+        Example
+            su  # run bash shell under user root
+
+    useradd - create a new user or update default new user information
+        Example
+            useradd -m -d <USER_HOME> -c "<USER_DESCRIPTION>" <USER_NAME>  # create user USER_NAME, give they description <USER_DESCRIPTION> and create home directory for them
+
+    userdel - delete a user account and related files
+        Example
+            userdel -r <USER_NAME>  # delete user USER_NAME and delete respective home directory
+
+    usermod - modify a user account
+        Example
+            usermod -c '<USER_DESCRIPTION>' <USER_NAME>  # change description of user USER_NAME to USER_DESCRIPTION
+        Example
+            usermod -s <PATH_TO_SHELL> <USER_NAME>  # change default shell to <PATH_TO_SHELL> for user <USER_NAME>
+        Example
+            usermod -L <USER_NAME>  # block user
+        Example
+            usermod -U <USER_NAME>  # unblock user
+        Example
+            usermod -a -G <GROUP_NAME> <USER_NAME>  # add user <USER_NAME> to the group <GROUP_NAME>
+        Example
+            usermod -G <GROUP_NAMES> <USER_NAME>  # set <GROUP_NAMES> as new groups for the user <USER_NAME>
+
+    passwd - change user password
+
+    chage - change user password expiry information
+
+    chsh - change login shell
+
+
+Group access control
+    groupadd - create a new group
+        Example
+            groupadd <GROUP_NAME>
+
+    groups - print groups of the current user
+
+    groupmod - modify group definition on the system
+        Example
+            groupmod -n <NEW_GROUP_NAME> <GROUP_NAME>  # rename group <GROUP_NAME> to <NEW_GROUP_NAME>
+
+    groupdel - delete a group
+        Example
+            groupdel <GROUP_NAME>
+
+    gpasswd - administer /etc/group and /etc/gshadow
+        Example
+            gpasswd -A <USER_NAME> <GROUP_NAME>  # give user <USER_NAME> control over group access to the group <GROUP_NAME>
+        Example
+            gpasswd -A "" <GROUP_NAME>  # Delete all administrators of the group <GROUP_NAME> from <GROUP_NAME>
+        Example
+            gpasswd -d <USER_NAME> <GROUP_NAME>  # delete user <USER_NAME> from group <GROUP_NAME>
+
+    newgrp - login into a new group
+        Example
+            newgrp <GROUP_NAME>  # set group <GROUP_NAME> as current users default group
+
+
+File access control
+    Every file is owned both by user and a group
+
+    File types
+        - - ordinary file
+        d - directory
+        l - symbolic link
+        p - pipe
+        b - block device
+        c - console device
+        s - socket
+
+    File access types
+        r - read file
+        w - write file
+        x - execute file (for directories, it means entering it)
+
+    File access control in numeric form
+        0 - ---
+        1 - --x
+        2 - -w-
+        3 - -wx
+        4 - r--
+        5 - r-x
+        6 - rw-
+        7 - rwx
+
+    File access control description
+        <FILE_TYPE><USER_FILE_ACCESS><GROUP_FILE_ACESS><OTHER_USERS_FILE_ACCESS>
+        Example
+            drwxrw-r-- - direcory that is readable writable and executable by its onwer user, readble and writable by users of its owner group, readable by other users
+
+    chgrp - change group ownership
+        Example
+            chgrp <NEW_GROUP_NAME> <FILE_NAME>  # change group of the file <FILE_NAME> to <NEW_GROUP_NAME>
+
+    chown - change file owner and group
+        Example
+            chown <NEW_USER_NAME> <FILE_NAME>  # change user of the file <FILE_NAME> to <NEW_USER_NAME>
+        Example
+            chown <NEW_GROUP_NAME>:<NEW_USER_NAME> <FILE_NAME>  # change user and group of the file <FILE_NAME> to <NEW_GROUP_NAME> and <NEW_USER_NAME> respectively
+
+    chmod - change file mode bits
+        Example
+            chmod u+x <FILE_NAME>   # give current user right to execute file <FILE_NAME>
+        Example
+            chmod og-r <FILE_NAME>  # revoke read right of the file <FILE_NAME> from the current file group and all other users (except file owner)
+        Example
+            chmod a+x <FILE_NAME>  # give all users rights to execute file <FILE_NAME>
+        Example
+            chmod u=rw,o=r <FILE_NAME>  # set for the current file owner read and write rights to the <FILE_NAME>; set for all other users read rights to the <FILE_NAME>
+        Example
+            chmod 777 <FILE_NAME>  # give full acccess to everyone for the file <FILE_NAME>
+
+    umask - set file mode creation mask
 
 
