@@ -1,16 +1,23 @@
 Manuals
     man - system reference manuals
-        man <COMMAND>
-        man <CONF_FILE>
-        man <DAEMON>
-        man -k <SEARCH TEXT>
-        man hier  # print description of directories hierarchy of the host machine
+        Example
+            man <COMMAND>
+        Example
+            man <CONF_FILE>
+        Example
+            man <DAEMON>
+        Example
+            man -k <SEARCH TEXT>
+        Example
+            man hier  # print description of directories hierarchy of the host machine
 
     whatis - one-line manual
-        whatis <COMMAND>
+        Example
+            whatis <COMMAND>
 
     whereis - system file location (binary, source manual)
-        whatis <COMMAND>
+        Example
+            whatis <COMMAND>
 
     mandb - update local manuals
 
@@ -19,76 +26,114 @@ Navigating directories
     pwd - print current directory
 
     cd - change directory
-        cd <DIR>
-        cd ~   # go $HOME
-        cd -   # go back
-        cd ..  # go up
+        Example
+            cd <DIR_NAME>
+        Example
+            cd ~   # go $HOME
+        Example
+            cd -   # go back
+        Example
+            cd ..  # go up
 
     ls - list files in a directory
-        ls <DIR>
-        ls -a   # list all files (including hidden files)
-        ls -l   # detailed listing
-        ls -lh  # detailed listing with numbers in human readable format
+        Example
+            ls <DIR_NAME>
+        Example
+            ls -a   # list all files (including hidden files)
+        Example
+            ls -l   # detailed listing
+        Example
+            ls -lh  # detailed listing with numbers in human readable format
 
     mkdir - create directory
-        mkdir    <DIR>
-        mkdir -p <DIR>  # create directories including parent directories
-        mkdir -m <ACCESS_RIGHTS> <DIR>  # create directory with given access rights
+        Example
+            mkdir    <DIR_NAME>
+        Example
+            mkdir -p <DIR_NAME>  # create directories including parent directories
+        Example
+            mkdir -m <ACCESS_RIGHTS> <DIR_NAME>  # create directory with given access rights
 
     rmdir - delete direcory if empty
-        rm       <DIR>
-        rmdir -p <DIR>  # delete directories including parent directories
+        Example
+            rm <DIR_NAME>
+        Example
+            rmdir -p <DIR_NAME>  # delete directories including parent directories
 
 
 Managing files
     file - return file type
-        file <FILE>
-        file -s   # return file type for special files (e.g. files in /dev or /proc)
+        Example
+            file <FILE>
+        Example
+            file -s   # return file type for special files (e.g. files in /dev or /proc)
 
     touch - change file timestamps
-        touch            <FILE>
-        touch -t <STAMP> <FILE>
+        Example
+            touch            <FILE>
+        Example
+            touch -t <STAMP> <FILE>
 
     rm - delete files and directories
-        rm     <FILES>
-        rm -i  <FILES>      # ask confirmation before deleting
-        rm -rf <DIRS|FILES> # recursive forced deletion of files and directories
+        Example
+            rm     <FILES>
+        Example
+            rm -i  <FILES>      # ask confirmation before deleting
+        Example
+            rm -rf <DIRS|FILES> # recursive forced deletion of files and directories
 
     cp - copy files and directories
-        cp    <SRC> <DST>
-        cp -r <SRC> <DST>  # recursive copying
-        cp -i <SRC> <DST>  # ask confirmation before copying
-        cp -p <SRC> <DST>  # copy file and preserve access rights
+        Example
+            cp    <SRC> <DST>
+        Example
+            cp -r <SRC> <DST>  # recursive copying
+        Example
+            cp -i <SRC> <DST>  # ask confirmation before copying
+        Example
+            cp -p <SRC> <DST>  # copy file and preserve access rights
 
     mv - move file or directory
-        mv    <SRC> <DST>  # copy (or rename if SRC exists) a file or a directory
-        mv -i <SRC> <DST>  # ask confirmation before moving
+        Example
+            mv    <SRC> <DST>  # copy (or rename if SRC exists) a file or a directory
+        Example
+            mv -i <SRC> <DST>  # ask confirmation before moving
 
 
 Managing files contents
     head - ouput the first part of the file
-        head <FILE>        # output first 10 lines
-        head -n<N> <FILE>  # output first N lines
-        head -c<N> <FILE>  # ouput first N bytes
+        Example
+            head <FILE>        # output first 10 lines
+        Example
+            head -n<N> <FILE>  # output first N lines
+        Example
+            head -c<N> <FILE>  # ouput first N bytes
 
     tail - output the last part of the file
-        tail       <FILE>  # ouput last 10 lines
-        tail -n<N> <FILE>  # output last N lines of the file
-        tail -c<N> <FILE>  # output last N bytes of the file
+        Example
+            tail       <FILE>  # ouput last 10 lines
+        Example
+            tail -n<N> <FILE>  # output last N lines of the file
+        Example
+            tail -c<N> <FILE>  # output last N bytes of the file
 
     cat - concatenate files and print to stdout
-        cat <FILE>   # print file to stdout
-        cat <FILES>  # concatenate multiple files and print to stdout
+        Example
+            cat <FILE>   # print file to stdout
+        Example
+            cat <FILES>  # concatenate multiple files and print to stdout
 
     tac - concatenate files and print to stdout in reverse
-        cat <FILE>   # print reversed file to stdout
-        cat <FILES>  # concatenate multiple files and print to stdout in reverse
+        Example
+            cat <FILE>   # print reversed file to stdout
+        Example
+            cat <FILES>  # concatenate multiple files and print to stdout in reverse
 
     less - paginate files to stdout
-        less <FILE>  # print file to stdout page by page
+        Example
+            less <FILE>  # print file to stdout page by page
 
     strings - print sequences of printable characters in files
-        strings <BINARY>  # print ASCII symbols stored in a binary file
+        Example
+            strings <BINARY>  # print ASCII symbols stored in a binary file
 
 
 Directories hierarchy
@@ -158,22 +203,28 @@ Commands and arguments
         <CMD> <ARG1> <ARG2> ...  # excessive whitespaces are discarded
 
     Arguments enclosed by single or double quotes are preserved as is
-        echo 'la   la la'  # ouput: la   la la
+        Example
+            echo 'la   la la'  # ouput: la   la la
 
     Some command are shell builtins, some are external binaries, some are both
 
     type - detect command type (shell builtin, external tool, alias)
-        type    <CMD>  # get shell command type
-        type -a <CMD>  # get all types for a command
+        Example
+            type    <CMD>  # get shell command type
+        Example
+            type -a <CMD>  # get all types for a command
 
     which - detect binary location (search among directories listed in $PATH)
-        which <CMD>  # get binary location for command CMD
+        Example
+            which <CMD>  # get binary location for command CMD
 
     alias - create pseudonym for command
-        alias <ALIAS_NAME>="COMMANDS_WITH_ARGS"
+        Example
+            alias <ALIAS_NAME>="COMMANDS_WITH_ARGS"
 
     unalias - delete alias
-        unalias <ALIAS_NAME>  # delete existing alias
+        Example
+            unalias <ALIAS_NAME>  # delete existing alias
 
 
 Operators
@@ -235,17 +286,26 @@ Environment variables
             export MyVar=4 # assign value 4 to MyVar and make it available to child shell processes
 
     env - run command with additional environment variables
-        env                   # list current shell environment variables
-        env <VAR_DEFS> <CMD>  # execute <CMD> with additional environment variables defined in <VAR_DEFS>
+        Example
+            env                   # list current shell environment variables
+        Example
+            env <VAR_DEFS> <CMD>  # execute <CMD> with additional environment variables defined in <VAR_DEFS>
 
     set - configure shell, set environment variables
-        set     # list all environment variable and functions
-        set -x  # turn on  output expanded command exectured by shell
-        set +x  # turn off output expanded command exectured by shell
-        set -u  # treat uninitialized variables as errors
-        set +u  # treat uninitialized variables as empty variables
-        set -C  # disallow existing regular files to be overwritten by redirection of output
-        set +C  #    allow existing regular files to be overwritten by redirection of output
+        Example
+            set     # list all environment variable and functions
+        Example
+            set -x  # turn on  output expanded command exectured by shell
+        Example
+            set +x  # turn off output expanded command exectured by shell
+        Example
+            set -u  # treat uninitialized variables as errors
+        Example
+            set +u  # treat uninitialized variables as empty variables
+        Example
+            set -C  # disallow existing regular files to be overwritten by redirection of output
+        Example
+            set +C  #    allow existing regular files to be overwritten by redirection of output
 
     unset - delete existing variable from shell
 
@@ -414,10 +474,14 @@ Redirection
 
 Filters
     grep - search patterns in each line of the file
-        grep <OPTIONS> <PATTERN> <FILE>  # find all lines in FILE matching PATTERN with addtional OPTIONS
-        grep -E <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using extended regular expressions ERE
-        grep -G <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using basic regular expressions ERE
-        grep -P <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using perl regular expressions ERE
+        Example
+            grep <OPTIONS> <PATTERN> <FILE>  # find all lines in FILE matching PATTERN with addtional OPTIONS
+        Example
+            grep -E <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using extended regular expressions ERE
+        Example
+            grep -G <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using basic regular expressions ERE
+        Example
+            grep -P <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using perl regular expressions ERE
         Example
             grep 'pass' /etc/passwd  # find all lines in /etc/passws containing substring  pass
         Example
@@ -788,7 +852,47 @@ File access control
             chmod u=rw,o=r <FILE_NAME>  # set for the current file owner read and write rights to the <FILE_NAME>; set for all other users read rights to the <FILE_NAME>
         Example
             chmod 777 <FILE_NAME>  # give full acccess to everyone for the file <FILE_NAME>
+        Example
+            chmod +t <DIR_NAME>  # add sticjy bit for directory DIR; this prevents deleteion of files in DIR_NAME by users not owning these files
+        Example
+            chmod 1<ACCESS_RIGHTS> <DIR_NAME>  # add sticky bit for directory <DIR_NAME>; this prevents deletion of files in DIR_NAME by users not owning these files
+        Example
+            chmod 2<ACCESS_RIGHTS> <DIR_NAME>  # set <DIR_NAME> owner group as owner group for files in <DIR_NAME>
 
     umask - set file mode creation mask
 
 
+Access control lists
+    Access control list (ACL) provides an additional, more flexible permission mechanism for file systems.
+    getfacl - get file access control lists
+        Example
+            getfacl <FILE_NAME>
+
+    setfacl - set file access control lists
+        Example
+            setfacl -m u:<USER_NAME>:<ONE_DIGIT_ACCESS_RIGHTS> <FILE_NAME>  # set access rights as <ONE_DIGIT_ACCESS_RIGHTS> for the user <USER_NAME> for the file <FILE_NAME>
+        Example
+            setfacl -m g:<GROUP_NAME>:<ONE_DIGIT_ACCESS_RIGHTS> <FILE_NAME>  # set access rights as <ONE_DIGIT_ACCESS_RIGHTS> for the group <GROUP_NAME> for the file <FILE_NAME>
+        Example
+            setfacl -x <USER_NAME> <FILE_NAME>  # delete user <USER_NAME> from access control list for the file <FILE_NAME>
+        Example
+            setfacl -b <FILE_NAME>  # delete all access control lists for the file <FILE_NAME>
+
+
+Links
+    Any linux filesystem stores files and their metainformation.
+    File metainformation is stored in special data structures called inodes.
+    Inodes contain file access rights, size, creation date (but not file name!)
+    Any linux directory is a special file (like a table) that stores mapping from its file names to inodes
+    Any inodes can have multiple names.
+    Entries in directories that are just another name for some inode are called hard links.
+    Everytime one performs an action on hard link one effectively works with the file the hard link points to
+    Inode is deleted if there is no names assigned to. Therefore inode is not deleted if there is a hard link pointing to it
+    On linux systems we also have symbolic links.
+    Symbolic link is a special file that stores name of another file.
+    Every time one performs an action on a symbolic link one effectively works with the file the soft link points to
+
+    Example
+        ln <FILE_NAME> <HARD_LINK_NAME>  # create a hard link <HARD_LINK_NAME> that points to a file <FILE_NAME>
+    Example
+        ln -s <FILE_NAME> <SYMBOLIC_LINK_NAME>  # create a symbolic link <SYMBOLIC_LINK_NAME> that points to a <FILE_NAME>
