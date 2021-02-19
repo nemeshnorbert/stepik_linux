@@ -1,0 +1,37 @@
+Navigating directories
+    pwd - print current directory
+
+    cd - change directory
+        Example
+            cd <DIR_NAME>
+        Example
+            cd ~   # go $HOME
+        Example
+            cd -   # go back
+        Example
+            cd ..  # go up
+
+    ls - list files in a directory
+        Example
+            ls <DIR_NAME>
+        Example
+            ls -a   # list all files (including hidden files)
+        Example
+            ls -l   # detailed listing
+        Example
+            ls -lh  # detailed listing with numbers in human readable format
+
+    mkdir - create directory
+        Example
+            mkdir    <DIR_NAME>
+        Example
+            mkdir -p <DIR_NAME>  # create directories including parent directories
+        Example
+            mkdir -m <ACCESS_RIGHTS> <DIR_NAME>  # create directory with given access rights
+
+    rmdir - delete direcory if empty
+        Example
+            rm <DIR_NAME>
+        Example
+            rmdir -p <DIR_NAME>  # delete directories including parent directories
+

@@ -1,0 +1,18 @@
+Links
+    Any linux filesystem stores files and their metainformation.
+    File metainformation is stored in special data structures called inodes.
+    Inodes contain file access rights, size, creation date (but not file name!)
+    Any linux directory is a special file (like a table) that stores mapping from its file names to inodes
+    Any inodes can have multiple names.
+    Entries in directories that are just another name for some inode are called hard links.
+    Everytime one performs an action on hard link one effectively works with the file the hard link points to
+    Inode is deleted if there is no names assigned to. Therefore inode is not deleted if there is a hard link pointing to it
+    On linux systems we also have symbolic links.
+    Symbolic link is a special file that stores name of another file.
+    Every time one performs an action on a symbolic link one effectively works with the file the soft link points to
+
+    Example
+        ln <FILE_NAME> <HARD_LINK_NAME>  # create a hard link <HARD_LINK_NAME> that points to a file <FILE_NAME>
+    Example
+        ln -s <FILE_NAME> <SYMBOLIC_LINK_NAME>  # create a symbolic link <SYMBOLIC_LINK_NAME> that points to a <FILE_NAME>
+

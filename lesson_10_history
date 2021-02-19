@@ -1,0 +1,28 @@
+History
+    history - list previously executed commands
+        history <N>  # list last N executed commands
+        N.B.
+            $HISTSIZE - number of commands to store in history
+            $HISTFILE - path to file with history
+            $HISTFILESIZE - size of the history file
+
+    !! - last executed command
+        Example
+            ls /root
+            sudo !!
+
+    !<CMD_PREFIX> - run previously executed command that starts from CMD_PREFIX
+        Example
+            touch file42
+            cd ~
+            !to
+
+    !<CMD_PREFIX>:<SED_REGEX> - run previously executed command that starts from CMD_PREFIX and apply changes via SED_REGEX
+        Example
+            cat file1
+            !ca:s/1/2
+
+    !<N> - run previously executed command that with order number N in history
+        Example
+            !43
+

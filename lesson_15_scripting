@@ -1,0 +1,177 @@
+Scripting
+    Shebang
+        #!/bin/bash - add this line at the beginning of your script to run it via /bin/bash shell. Do not forget to make this script executable
+
+    Comments
+        # - everything that goes after this symbol in the line is a comment
+
+    Variables
+        <VAR_NAME>=<VAR_VALUE> - this line defines variable VAR_NAME and assigns it value VAR_VALUE. Do not add whitespaces around = sign!
+        Example
+            my_home_dir="~"
+            my_fav_number=42
+
+    Sourcing
+        source ./script.sh - run script.sh and import all functions and variables from it into the current shell
+
+    Debugging
+        bash -x ./script.sh - run script.sh and print every line being executed
+
+    Comparison and testing
+        test - check file types and compare variables
+        Example
+            test 10 -gt 11  # check that 10 > 11; return status 1, meaning false
+            [ EXPRESSION ]  # another symtax for the same utility; do not forget to add whitespaces around square brackets!
+        Example
+            [ -d some_dir ]  # check that directory some_dir exists
+        Example
+            [ -e some_file ]  # check that file some_file exists
+        Example
+            [ -f some_thing ]  # check that some_thing is a file
+
+    Branching
+        Example
+            if <EXPRESSION>; then
+                <STATEMENT>
+            fi
+        Example
+            if <EXPRESSION>; then
+                <STATEMENT>
+            else
+                <STATEMENT>
+            fi
+        Example
+            if <EXPRESSION>; then
+                <STATEMENT>
+            elif
+                <STATEMENT>
+            else
+                <STATEMENT>
+            fi
+
+    For loop
+        Example
+            for i in <SEQUENCE>; do
+                <STATEMENT>
+            done
+        Example
+            for counter in `seq 1 10`; do
+                echo $counter
+            done
+        Example
+            for counter in {1..10}; do
+                echo $counter
+            done
+
+    While loop
+        Example
+            while <EXPRESSION>; do
+                <STATEMENT>
+            done
+        Example
+            while [ $i -ge 0 ] ; do
+                let i--;
+            done
+        Example
+            while : do  # infinite loop
+                echo hello
+                sleep 1
+            done
+
+    Until loop
+        Example
+            until <EXPRESSION>; do
+                <STATEMENT>
+            done
+        Example
+            let i=100;
+            until [ $i -le 0 ]; do
+                let i--;
+            done
+
+    Case
+        Example
+            echo -n "What anaimal do you see"
+            read animal
+            case $animal in
+                "lion" | "tiger")
+                    echo "Run for your life!"
+                ;;
+                "cat")
+                    echo "Let the mouse out"
+                ;;
+                *)
+                    echo "An unknown animal! Give it a name!"
+                ;;
+            esac
+
+    Arguments
+        $$ - procesd id of script interpreter
+        $# - number of script arguments
+        $? - return status of the last executed command
+        $* - string representation of all scrit arguments
+        $0 - script name
+        $1 - first script argument
+        ${10} - tenth script argument
+        Example
+            while (( $# )); do  # arguments traversal with shift utility
+                echo Вы передали сценарию параметр $1
+                shift
+            done
+        Example
+            echo -n "Enter a number"  # ask user to enter a number
+            read number               # read from input
+        Example
+            while getopts ":af:z" option; do  # parse arguments via getopts tool
+                case $option in
+                    a)
+                        echo" parameter -a accepted"
+                        ;;
+                    f)
+                        echo "parameter -f accepted with argument $OPTARG"
+                        ;;
+                    z)
+                        echo "parameter -z accepted"
+                        ;;
+                    :)
+                        echo "please specify argument for the parameter -$OPTARG"
+                        ;;
+                    *)
+                        echo "incorrect parameter -$OPTARG"
+                        ;;
+                esac
+            done
+
+    Eval
+        eval - interpret string as bash code
+        Example
+            answer=42
+            word=answer
+            eval x=\$$word
+            echo $x
+        Example
+            answer=42
+            word=answer
+            eval "y=\$$word"
+            echo $y
+        Example
+            lastweek='date --date="1 week ago"'
+            eval $lastweek
+
+    Arithmetic operations
+        (( <EXPRESSION> )) - evaluate arithmetic expression <EXPRESSION>
+        Example
+            ((42 > 37))
+        Example
+            ((n=$n + 1))
+        Example
+            n=$(($n + 1))
+
+    Let
+        let VAR_NAME="<EXPRESSION>" - assign result of evaluation of <EXPRESION> to the variable <VAR_NAME>
+        Example
+            let x="3+4"
+        Example
+            let x="0xA8"
+
+

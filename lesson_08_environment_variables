@@ -1,0 +1,46 @@
+Environment variables
+    <NAME>=<CONTENTS> - declaration of variable <NAME> with value <CONTENTS>. Names are case sensitive
+        Example
+            MyVar='la la'         # save text 'la la' in variable MyVar
+
+    $<NAME> - substitute text $<NAME> with contents of variable <NAME>
+            NewVar="doo doo $MaVar" # expand $MyVar, get the text 'doo doo la la' and store it in NewVar
+
+    $PS1 - environment variable describing shell prompt format
+        Example
+            PS1='> '
+
+    $PATH - environment variable storing paths to look for for binaries
+        Example
+            PATH=$PATH:/home/bin  # add /home/bin as path to look for binaries in when running shell commands
+
+    export - make environment variables available to child shell processes
+        Example
+            export MyVar   # make existing MyVar available to child shell processes
+        Example
+            export MyVar=4 # assign value 4 to MyVar and make it available to child shell processes
+
+    env - run command with additional environment variables
+        Example
+            env                   # list current shell environment variables
+        Example
+            env <VAR_DEFS> <CMD>  # execute <CMD> with additional environment variables defined in <VAR_DEFS>
+
+    set - configure shell, set environment variables
+        Example
+            set     # list all environment variable and functions
+        Example
+            set -x  # turn on  output expanded command exectured by shell
+        Example
+            set +x  # turn off output expanded command exectured by shell
+        Example
+            set -u  # treat uninitialized variables as errors
+        Example
+            set +u  # treat uninitialized variables as empty variables
+        Example
+            set -C  # disallow existing regular files to be overwritten by redirection of output
+        Example
+            set +C  #    allow existing regular files to be overwritten by redirection of output
+
+    unset - delete existing variable from shell
+

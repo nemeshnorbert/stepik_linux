@@ -1,0 +1,62 @@
+File access control
+    Every file is owned both by user and a group
+
+    File types
+        - - ordinary file
+        d - directory
+        l - symbolic link
+        p - pipe
+        b - block device
+        c - console device
+        s - socket
+
+    File access types
+        r - read file
+        w - write file
+        x - execute file (for directories, it means entering it)
+
+    File access control in numeric form
+        0 - ---
+        1 - --x
+        2 - -w-
+        3 - -wx
+        4 - r--
+        5 - r-x
+        6 - rw-
+        7 - rwx
+
+    File access control description
+        <FILE_TYPE><USER_FILE_ACCESS><GROUP_FILE_ACESS><OTHER_USERS_FILE_ACCESS>
+        Example
+            drwxrw-r-- - direcory that is readable writable and executable by its onwer user, readble and writable by users of its owner group, readable by other users
+
+    chgrp - change group ownership
+        Example
+            chgrp <NEW_GROUP_NAME> <FILE_NAME>  # change group of the file <FILE_NAME> to <NEW_GROUP_NAME>
+
+    chown - change file owner and group
+        Example
+            chown <NEW_USER_NAME> <FILE_NAME>  # change user of the file <FILE_NAME> to <NEW_USER_NAME>
+        Example
+            chown <NEW_GROUP_NAME>:<NEW_USER_NAME> <FILE_NAME>  # change user and group of the file <FILE_NAME> to <NEW_GROUP_NAME> and <NEW_USER_NAME> respectively
+
+    chmod - change file mode bits
+        Example
+            chmod u+x <FILE_NAME>   # give current user right to execute file <FILE_NAME>
+        Example
+            chmod og-r <FILE_NAME>  # revoke read right of the file <FILE_NAME> from the current file group and all other users (except file owner)
+        Example
+            chmod a+x <FILE_NAME>  # give all users rights to execute file <FILE_NAME>
+        Example
+            chmod u=rw,o=r <FILE_NAME>  # set for the current file owner read and write rights to the <FILE_NAME>; set for all other users read rights to the <FILE_NAME>
+        Example
+            chmod 777 <FILE_NAME>  # give full acccess to everyone for the file <FILE_NAME>
+        Example
+            chmod +t <DIR_NAME>  # add sticjy bit for directory DIR; this prevents deleteion of files in DIR_NAME by users not owning these files
+        Example
+            chmod 1<ACCESS_RIGHTS> <DIR_NAME>  # add sticky bit for directory <DIR_NAME>; this prevents deletion of files in DIR_NAME by users not owning these files
+        Example
+            chmod 2<ACCESS_RIGHTS> <DIR_NAME>  # set <DIR_NAME> owner group as owner group for files in <DIR_NAME>
+
+    umask - set file mode creation mask
+

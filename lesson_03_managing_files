@@ -1,0 +1,37 @@
+Managing files
+    file - return file type
+        Example
+            file <FILE>
+        Example
+            file -s   # return file type for special files (e.g. files in /dev or /proc)
+
+    touch - change file timestamps
+        Example
+            touch            <FILE>
+        Example
+            touch -t <STAMP> <FILE>
+
+    rm - delete files and directories
+        Example
+            rm     <FILES>
+        Example
+            rm -i  <FILES>      # ask confirmation before deleting
+        Example
+            rm -rf <DIRS|FILES> # recursive forced deletion of files and directories
+
+    cp - copy files and directories
+        Example
+            cp    <SRC> <DST>
+        Example
+            cp -r <SRC> <DST>  # recursive copying
+        Example
+            cp -i <SRC> <DST>  # ask confirmation before copying
+        Example
+            cp -p <SRC> <DST>  # copy file and preserve access rights
+
+    mv - move file or directory
+        Example
+            mv    <SRC> <DST>  # copy (or rename if SRC exists) a file or a directory
+        Example
+            mv -i <SRC> <DST>  # ask confirmation before moving
+

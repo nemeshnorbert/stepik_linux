@@ -1,0 +1,16 @@
+Access control lists
+    Access control list (ACL) provides an additional, more flexible permission mechanism for file systems.
+    getfacl - get file access control lists
+        Example
+            getfacl <FILE_NAME>
+
+    setfacl - set file access control lists
+        Example
+            setfacl -m u:<USER_NAME>:<ONE_DIGIT_ACCESS_RIGHTS> <FILE_NAME>  # set access rights as <ONE_DIGIT_ACCESS_RIGHTS> for the user <USER_NAME> for the file <FILE_NAME>
+        Example
+            setfacl -m g:<GROUP_NAME>:<ONE_DIGIT_ACCESS_RIGHTS> <FILE_NAME>  # set access rights as <ONE_DIGIT_ACCESS_RIGHTS> for the group <GROUP_NAME> for the file <FILE_NAME>
+        Example
+            setfacl -x <USER_NAME> <FILE_NAME>  # delete user <USER_NAME> from access control list for the file <FILE_NAME>
+        Example
+            setfacl -b <FILE_NAME>  # delete all access control lists for the file <FILE_NAME>
+

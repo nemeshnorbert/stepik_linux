@@ -1,0 +1,61 @@
+Directories hierarchy
+    / - root direcory
+        all files and directories are here
+
+    /bin - binary files used by all users
+
+    /sbin - binary files for OS management
+
+    /lib - shared libraries used by binaries from /bin and /sbin
+        /lib/modules - libraries used by Linux kernel
+
+    /lib32 - libraries for 32-bit systems
+
+    /li64 - libraries for 64-bit systems
+
+    /opt - optional software additionally installed from packeages
+
+    /boot - files required for booting the system
+
+    /etc - machine specific configuration files
+        /etc/init.d - settings for starting and stopping daemons
+        /etc/X11 - GUI settings
+
+    /home - users data
+
+    /root - root user data
+
+    /srv - storage for data processed by your host machine (e.g. /srv/sales/www)
+
+    /media - mount point for CDs, DVDs
+
+    /mnt - mount point for external file systems (e.g. SSDs or HDDs)
+
+    /tmp - temporary files storage
+
+    /dev - standard physical devices that host system regards as files
+        /dev/tty - terminal device
+        /dev/pts/1 - GUI terinal device
+        /dev/null - black hole file
+
+    /proc - files representing internal state of the kernel
+        /proc/interrupts - system interrupts
+        /proc/kcore - system RAM
+
+    /sys - hardware information
+
+    /usr - unix system resources, read only applications data
+        /usr/bin - standard system commands
+        /usr/include - standard C header files
+        /usr/lib - standard shared libraries
+        /usr/local - storage for local software installation
+        /usr/share - system independent data
+        /usr/src - system kernel source code
+
+    /var - logs, caches
+        /var/log - general purpose logs storage
+        /var/log/syslog - log with all system events
+        /var/cache - applications caches
+        /var/spool - email serever data and cron data
+        /var/lib - data on applications state
+

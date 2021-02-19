@@ -1,0 +1,35 @@
+Operators
+    ; - seprarte shell command
+        <CMD1>; <CMD2>; <CMD3>  # execute all commands (even if some fail)
+        Example
+            echo Hi; echo Dude; echo Wazzup
+
+    & - execute command and immideately return control to the shell
+        <CMD> &  # execute CMD and return control to the shell
+        Example
+            sleep 30 &
+
+    $? - exit status of the last executed command
+
+    $- - settings of the current shell
+        Example
+            echo $-  # output: himBH (see also set --help)
+
+    && - logical and
+        <CMD1> && <CMD2>  # execute CMD1, if exit status is 0, execute CMD2
+
+    || - logical or
+        <CMD1> || <CMD2>  # execute CMD1, if exit status is not 0, execute CMD2
+
+    # - commemts
+        <CMD> # <COMMENT>  # execute CMD, ignore everithing after # sign till the end of the line
+
+    \ - escaping symbol
+        \n - new line
+        \t - horizontal TAB
+        \v - vertical tab
+        echo hi\
+        >  dude \
+        >  wazzup
+        - print multiline command
+

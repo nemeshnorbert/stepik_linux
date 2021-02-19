@@ -1,0 +1,29 @@
+Commands and arguments
+    Command calls
+        <CMD> <ARG1> <ARG2> ...  # excessive whitespaces are discarded
+
+    Arguments enclosed by single or double quotes are preserved as is
+        Example
+            echo 'la   la la'  # ouput: la   la la
+
+    Some command are shell builtins, some are external binaries, some are both
+
+    type - detect command type (shell builtin, external tool, alias)
+        Example
+            type    <CMD>  # get shell command type
+        Example
+            type -a <CMD>  # get all types for a command
+
+    which - detect binary location (search among directories listed in $PATH)
+        Example
+            which <CMD>  # get binary location for command CMD
+
+    alias - create pseudonym for command
+        Example
+            alias <ALIAS_NAME>="COMMANDS_WITH_ARGS"
+
+    unalias - delete alias
+        Example
+            unalias <ALIAS_NAME>  # delete existing alias
+
+

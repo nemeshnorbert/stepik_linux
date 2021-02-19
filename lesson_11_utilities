@@ -1,0 +1,48 @@
+Utilities
+    find - search for files in a directory hierarchy
+        Example
+            find /etc  # find all files in etc directory
+        Example
+            find . -name "*.conf"  # find all files in the current directory with name matching "*.conf" glob
+        Example
+            find . -type f -name "*.conf"  # find all ordinary files in the current directory with name matching "*.conf" glob
+        Example
+            find /var/logs -type d -name "*.log"  # find all directories in /var/logs with name matching "*log" glob
+        Example
+            find ~ -newer .bashrc  # find all files in ~ created after .bashrc file
+        Example
+            find /data -name "*.odf" -exec cp {} /backup/ \;  # find all files matching "*.odf" in /data directory and copy them to /backup directory
+        Example
+            find /data -name "*.odf" -ok rm {} \;  # find all files matching "*.odf" in /data directory and remove them with requesting confirmation for each file
+
+    rename - rename multiple files via pattern matching
+        rename <SED_EXPR> <FILES>
+        Example
+            rename 's/file/FILE/' file*.png  # change file prefix to FILE prefix in all files matching file*.png glob
+        Example
+            rename 's/.txt$/.TXT/' *.txt  # change .txt extension to .TXT in all files matching *.txt glob
+
+    date - print or set sytem date and time
+        Example
+            date  # print current date
+        Example
+            date +'%A %d-%m-%Y'  # print date in a specific format
+        Example
+            date +%s  # print date in seconds since 01/01/1970
+        Example
+            date -d '1970-01-01 + 2000000000 seconds'  # print date desribed by string
+
+    cal - displays a calendar and the date of Easter
+        Example
+            cal  # display calendar for the current month
+        Example
+            cal 2 1970  # display calendar for February of 1970
+
+    sleep - delay for a specified amount of time
+        Example
+            sleep 10  # block shell for 10 seconds
+
+    time - run programs and summarize system resource usage
+        Example
+        `time date  # measure resource usage for date command
+

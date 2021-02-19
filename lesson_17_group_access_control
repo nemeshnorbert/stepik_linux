@@ -1,0 +1,27 @@
+Group access control
+    groupadd - create a new group
+        Example
+            groupadd <GROUP_NAME>
+
+    groups - print groups of the current user
+
+    groupmod - modify group definition on the system
+        Example
+            groupmod -n <NEW_GROUP_NAME> <GROUP_NAME>  # rename group <GROUP_NAME> to <NEW_GROUP_NAME>
+
+    groupdel - delete a group
+        Example
+            groupdel <GROUP_NAME>
+
+    gpasswd - administer /etc/group and /etc/gshadow
+        Example
+            gpasswd -A <USER_NAME> <GROUP_NAME>  # give user <USER_NAME> control over group access to the group <GROUP_NAME>
+        Example
+            gpasswd -A "" <GROUP_NAME>  # Delete all administrators of the group <GROUP_NAME> from <GROUP_NAME>
+        Example
+            gpasswd -d <USER_NAME> <GROUP_NAME>  # delete user <USER_NAME> from group <GROUP_NAME>
+
+    newgrp - login into a new group
+        Example
+            newgrp <GROUP_NAME>  # set group <GROUP_NAME> as current users default group
+

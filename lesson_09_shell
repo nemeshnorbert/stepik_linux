@@ -1,0 +1,14 @@
+Shell
+    bash - default shell
+        bach -c 'COMMANDS'  # execute COMMANDS in a child shell process
+
+    $(<COMMANDS>) -
+        Example
+            $(A='Hey'; echo $A)                            # Run two commands
+        Example
+            $(A='Hey'; echo $A; $(B=', boy!', echo $A$B))  # One can nest such child processes calls
+
+    `<COMMANDS>` - run COMMANDS in child shell process, such calls cannot be nested
+        Example
+            `cd /etc; ls -d *`
+

@@ -1,0 +1,37 @@
+Managing files contents
+    head - ouput the first part of the file
+        Example
+            head <FILE>        # output first 10 lines
+        Example
+            head -n<N> <FILE>  # output first N lines
+        Example
+            head -c<N> <FILE>  # ouput first N bytes
+
+    tail - output the last part of the file
+        Example
+            tail       <FILE>  # ouput last 10 lines
+        Example
+            tail -n<N> <FILE>  # output last N lines of the file
+        Example
+            tail -c<N> <FILE>  # output last N bytes of the file
+
+    cat - concatenate files and print to stdout
+        Example
+            cat <FILE>   # print file to stdout
+        Example
+            cat <FILES>  # concatenate multiple files and print to stdout
+
+    tac - concatenate files and print to stdout in reverse
+        Example
+            cat <FILE>   # print reversed file to stdout
+        Example
+            cat <FILES>  # concatenate multiple files and print to stdout in reverse
+
+    less - paginate files to stdout
+        Example
+            less <FILE>  # print file to stdout page by page
+
+    strings - print sequences of printable characters in files
+        Example
+            strings <BINARY>  # print ASCII symbols stored in a binary file
+

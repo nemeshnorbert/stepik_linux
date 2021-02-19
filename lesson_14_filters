@@ -1,0 +1,75 @@
+Filters
+    grep - search patterns in each line of the file
+        Example
+            grep <OPTIONS> <PATTERN> <FILE>  # find all lines in FILE matching PATTERN with addtional OPTIONS
+        Example
+            grep -E <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using extended regular expressions ERE
+        Example
+            grep -G <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using basic regular expressions ERE
+        Example
+            grep -P <PATTERN> <FILE>  # find all lines in FILE matching PATTERN using perl regular expressions ERE
+        Example
+            grep 'pass' /etc/passwd  # find all lines in /etc/passws containing substring  pass
+        Example
+            grep -i 'pass' /etc/passwd  # find all (case insensitive) lines in /etc/passws containing substring pass
+        Example
+            grep -v 'pass' /etc/passwd  # find all lines in /etc/passws not containing substring  pass
+        Example
+            grep -A2 'pass' /etc/passwd  # find all lines (and two following) in /etc/passws containing substring  pass
+        Example
+            grep -B1 'pass' /etc/passwd  # find all lines (and one preceeding) in /etc/passws containing substring  pass
+        Example
+            grep -C3 'pass' /etc/passwd  # find all lines (and three preceeding and three following) in /etc/passws containing substring  pass
+
+    tee - read from stdin and write files and stdout
+        Example
+            ls -la ~ | tee file1.txt file2.txt | grep ".bashrc"  # list all file in ~, write them to file1.txt and file2.txt, then redirect output to grep
+
+    cut - remove sections from each line of the file
+        Example
+            cut -d':' -f1-4,6 test.txt  # Extract columns from 1 to 4 and 6 from test.txt, values between columns are seprated by ':' symbol
+        Example
+            cut -d':' -c1-4,6 test.txt  # Extract symbols from 1 to 4 and 6 from test.txt, values between columns are seprated by ':' symbol
+
+    tr - translate or delete characters
+        Example
+            cat test.txt | tr 'e' 'E'  # replace 'e' in 'E' in test.txt file
+        Example
+            cat test.txt | tr 'a-z' 'A-Z'  # capitalize all English letters in test.txt file
+        Example
+            cat test.txt | tr '\n' ' '  # get rid of new lines
+        Example
+            cat test.txt | tr -d 'abc'  # delete a b and c symbols from test.txt
+
+    sort - sort lines in file
+        Example
+            sort table.txt  # get table.txt lines in sorted order
+        Example
+            sort -k2 table.txt  # get table.txt lines in sorted by column 2
+        Example
+            sort -n -k2 table.txt  # get table.txt lines in sorted by column 2, treat values in column 2 as numeric
+
+    sed - streaming editor for filtering and transforming text
+        Example
+            sed -i 's/abc/ed/' text.txt  # replace first occurence of abc with edf in ed in every line of file text.txt inplace
+        Example
+            echo "__abcabc__" | sed 's/abc/ed/'  # replace first occurence of abc with edf in ed
+        Example
+            echo "xxxabcyyyabc" | sed 's/abc/&&/'  # double first occurence of abc
+        Example
+            echo "__abc__abc__" | sed 's/abc/ed/g'  # replace each occurence of abc with edf in ed
+        Example
+            echo "123abc465" | sed -E 's/(abc)/__(\1)__(\1)pq/'  # replace first occurence of abc with __abc__abcpq
+        Example
+            echo 2014-04-01 | sed 's/....-..-../YYYY-MM-DD/'  # output: YYYY-MM-DD
+        Example
+            echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\1+\2+\3/'  # output: 2014+04+01
+        Example
+            echo -e 'nice\tto\tsee\tyou' | sed 's/\s/ /g'  # replace all tabs with spaces
+        Example
+            echo "BECOME" | sed -E '/BE/d'  # delete all occurences of BE
+        Exampe
+            echo "ll lol lool loool loooool" | sed 's/ooo\?/A/g'  # replace all 3 or more occurences of o with A
+        Exampe
+            echo "ll lol lool loool loooool" | sed 's/o\{2,3\}/A/g'  # replace all  2 or 3 occurences of o with A
+

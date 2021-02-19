@@ -1,0 +1,23 @@
+Manuals
+    man - system reference manuals
+        Example
+            man <COMMAND>
+        Example
+            man <CONF_FILE>
+        Example
+            man <DAEMON>
+        Example
+            man -k <SEARCH TEXT>
+        Example
+            man hier  # print description of directories hierarchy of the host machine
+
+    whatis - one-line manual
+        Example
+            whatis <COMMAND>
+
+    whereis - system file location (binary, source manual)
+        Example
+            whatis <COMMAND>
+
+    mandb - update local manuals
+

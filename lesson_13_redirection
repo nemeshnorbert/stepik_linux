@@ -1,0 +1,45 @@
+Redirection
+    <SRC> > <FILE> - redirect output from SRC to FILE
+        Example
+            echo "Hey!" > greeting.txt  # redirect output of echo command to greeting.txt file, original file is truncated
+        Example
+            echo "Hey!" >| greeting.txt  # redirect output of echo command to greeting.txt file, force file truncation even with noclobber set
+        Example
+            find / > allfiles.txt 2> /dev/null  # redirect stderr output of find command to /dev/null
+        Example
+            find / > allfiles.txt 2>&1  # redirect stderr output of find command to stdout
+        Example
+            ls > dirlist.txt 2>&1  # redirect stdout to dirlist.txt and stderr to
+        Example
+             > dirlist.txt  # empty file dirlist.txt
+
+
+    <SRC> >> <FILE> - append output from SRC to FILE
+        Example
+            echo "Hey!" >> greeting.txt  # append output of echo command to greeting.txt file
+
+    <CMD1> | <CMD2> - redirect outpit of CMD1 to input of CMD2
+        Example
+            ls ~ | tac  # redirect output of ls command to the input of the tac command
+        Example
+            ls ~ 2>&1 | tac  # redirect stdout and stderr of ls command to the input of the tac command
+
+    <CMD1> >& <CMD2> - redicrect stdout and stderr of CMD1 to input of CMD2
+        Example
+            ls ~ >& tac  # redirect stdout and stderr of ls command to the input of the tac command
+
+    <CMD> < <FILE> - redirect FILE to CMD as input
+        Example
+            tr 'onetw' 'ONEZZ' < text.txt
+
+    <CMD> <<SENTINEL > <FILE> - redirect output of CMD to FILE. use stdin as input for CMD and SENTINEL symbol as end of input
+        Example
+            cat <EOF > text.txt
+            > один
+            > два
+            > EOF
+
+    <CMD> <<< <SRTING> - use string literal STRING as input for CMD
+        Example
+            base64 <<< linux-training.be
+

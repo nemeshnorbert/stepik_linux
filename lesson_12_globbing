@@ -1,0 +1,23 @@
+Globbing
+    * - any string, including empty string
+        Example
+            ls File*  # list all files with prefix File
+        Example
+            ls File*55  # list all files with prefix File and suffix 55
+
+    ? - any single symbol
+        Example
+            ls File?  # list all files with 5 symbol names and prefix File
+
+    [<SYMBOLS>] - collection of symbols
+        Example
+            ls File[5A]  # list all files with 5 symbol names starting with File and ending with either 5 or A
+        Example
+            ls File[!5A]  # list all files with 5 symbol names starting with File and not ending with either 5 or A
+        Example
+            ls File[A-Z]  # list all files with 5 symbol names starting with File and ending with any character from range A to Z
+        Example
+            ls File[A-Z]  # list all files with 5 symbol names starting with File and ending with any character from range A to Z
+        Example
+            ls File[0-9]*[a-f]  # list all files with starting with File followed by digits and ending with letter from a to f
+
