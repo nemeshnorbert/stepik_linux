@@ -23,9 +23,9 @@ Managing files contents
 
     tac - concatenate files and print to stdout in reverse
         Example
-            cat <FILE>   # print reversed file to stdout
+            tac <FILE>   # print reversed file to stdout
         Example
-            cat <FILES>  # concatenate multiple files and print to stdout in reverse
+            tac <FILES>  # concatenate multiple files and print to stdout in reverse
 
     less - paginate files to stdout
         Example
